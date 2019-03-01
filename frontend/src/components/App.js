@@ -1,16 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Post } from '../pages';
+import AppTemplate from './common/AppTemplate';
 
 
 class App extends Component {
   render() {
     return (
-      <Fragment>
+      <AppTemplate>
         <Switch>
           <Route exact path="/" component={Post}/>
         </Switch>
-      </Fragment>
+      </AppTemplate>
     );
   }
 }
