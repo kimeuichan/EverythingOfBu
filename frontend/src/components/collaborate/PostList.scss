@@ -1,0 +1,14 @@
+.PostList{
+    display: flex;
+    flex-direction: column;
+
+    .ListItem{
+        display: flex;
+        justify-content: space-between;
+        .item{
+            flex: 0 1;
+
+        }
+    }
+
+}

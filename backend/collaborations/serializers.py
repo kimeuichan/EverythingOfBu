@@ -5,3 +5,8 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = '__all__'
+
+class MemberSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DetailMember
+        fields = '__all__'

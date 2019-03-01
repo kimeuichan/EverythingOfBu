@@ -17,7 +17,6 @@ class DetailMember(models.Model):
 
     class Meta:
         """Meta definition for DetailMember."""
-
         verbose_name = 'DetailMember'
         verbose_name_plural = 'DetailMembers'
 
