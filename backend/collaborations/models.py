@@ -1,10 +1,10 @@
 from django.contrib.gis.db import models
-from django.utils import timezone
 
 class Post(models.Model):
     title = models.CharField(max_length=20)
     description = models.TextField(max_length=200)
-    created_time = models.DateTimeField(default=timezone.now)
+    writter = models.ForeignKey('auth.User', related_name='posts', on_delete=models.CASCADE)
+    created_time = models.DateTimeField(auto_now_add=True)
     
 # Create your models here.
 
