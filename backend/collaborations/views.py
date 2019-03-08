@@ -1,5 +1,5 @@
-from .models import Post, DetailMember 
-from .serializers import PostSerializer, MemberSerializer, UserSerializer
+from .models import Post, NeedMember 
+from .serializers import PostSerializer, UserSerializer, MemberSerializer
 from rest_framework import generics
 from django.contrib.auth.models import User
 from .permissions import IsOwnerOrReadOnly
@@ -12,7 +12,8 @@ from rest_framework.reverse import reverse
 def api_root(request, format=None):
     return Response({
         'users': reverse('uesr-list', request=request, format=format),
-        'posts': reverse('post-list', request=request, format=format)
+        'posts': reverse('post-list', request=request, format=format),
+        'members': reverse('member-list', request=request, format=format),
     })
 
 class PostListCreate(generics.ListCreateAPIView):
@@ -21,7 +22,9 @@ class PostListCreate(generics.ListCreateAPIView):
     permission_classes = (permissions.IsAuthenticated, )
 
     def perform_create(self, serializer):
+        print("here")
         serializer.save(writter=self.request.user)
+
 # Create your views here.
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -29,8 +32,8 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
-class MemberListCreate(generics.ListCreateAPIView):
-    queryset = DetailMember.objects.all()
+class MemberList(generics.ListCreateAPIView):
+    queryset = NeedMember.objects.all()
     serializer_class = MemberSerializer
 
 class UserList(generics.ListAPIView):

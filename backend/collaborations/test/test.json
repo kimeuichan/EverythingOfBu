@@ -1,0 +1,11 @@
+{
+    "title": "Dropit123123",
+    "description": "TEST",
+    "isAlive": true,
+    "members": [
+                {
+                    "memberType": 1,
+                    "isRecruit": true
+                }
+     ]
+}
