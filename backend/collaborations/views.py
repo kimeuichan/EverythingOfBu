@@ -19,7 +19,7 @@ def api_root(request, format=None):
 class PostListCreate(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (permissions.IsAuthenticated, )
+    # permission_classes = (permissions.IsAuthenticated, )
 
     def perform_create(self, serializer):
         print("here")

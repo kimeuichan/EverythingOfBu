@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import PostTemplate from '../components/collaborate/PostTemplate';
+import PostListContainer from '../container/collaborate/PostListContainer';
 
 const Post = () => {
-  return <PostTemplate />;
+  return <PostListContainer />;
 };
 
 export default Post;

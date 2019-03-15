@@ -1,1 +1,6 @@
-export { collborate } from './collaborate';
+import { combineReducers } from 'redux';
+import collaborate from './collaborate';
+
+export default combineReducers({
+  collaborate,
+});
