@@ -1,12 +1,12 @@
 import { handleActions } from 'redux-actions';
 import axios from 'axios';
 
-function getPostListAPI(){
-  return axios.get('http://localhost/api/collaborate/post');
+function getPostListAPI(page){
+  return axios.get(`http://localhost/api/collaborate/post?page=${page}`);
 }
 
 function getPostAPI(postId){
-  return axios.get('http://localhost/api/collaborate/post');
+  return axios.get(`http://localhost/api/collaborate/post/${postId}`);
 }
 
 const GET_POST_LIST = 'GET_POST_LIST';
@@ -16,9 +16,9 @@ const GET_POST_LIST_FAILURE = 'GET_POST_LIST_FAILURE';
 
 
 
-export const getPostList = () => ({
+export const getPostList = (page) => ({
   type: GET_POST_LIST,
-  payload: getPostListAPI()
+  payload: getPostListAPI(page)
 });
 
 const initialState = {

@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import './PostList.scss';
 
 export function PostListItem({item}) {
   return (
-    <div className="ListItem">
-      <div className="item">{item.id}</div>
-      <div className="item">{item.title}</div>
-      <div className="item">{item.created_time}</div>
-    </div>
+    <Link to={"/collaborate/post/" + item.id}>
+      <div className="ListItem">
+        <div className="item">{item.id}</div>
+        <div className="item">{item.title}</div>
+        <div className="item">{item.created_time}</div>
+      </div>
+    </Link>
   )
 }
 

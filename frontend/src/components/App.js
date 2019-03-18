@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Post } from '../pages';
+import { PostList, Post } from '../pages';
 import AppTemplate from './common/AppTemplate';
 
 
@@ -9,7 +9,8 @@ class App extends Component {
     return (
       <AppTemplate>
         <Switch>
-          <Route exact path="/" component={Post}/>
+          <Route exact path="/collaborate/posts/:pageId?" component={PostList}/>
+          <Route exact path="/collaborate/post/:postId?" component={Post}/>
         </Switch>
       </AppTemplate>
     );
