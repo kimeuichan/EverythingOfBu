@@ -24,12 +24,7 @@ export const getPostList = (page) => ({
 const initialState = {
   pending: false,
   error: false,
-  data: {
-    count:0,
-    next: null,
-    previous:null,
-    results: [],
-  },    
+  postList: [], 
 };
 
 
@@ -43,19 +38,22 @@ export default handleActions({
   },
 
   [GET_POST_LIST_SUCCESS]: (state, action) => {
+    console.log(action);
     return {
       ...state,
       pending: false,
       error: false,
-      data: action.payload.data,
+      postList: action.payload.data.results,
     };
   },
 
   [GET_POST_LIST_FAILURE]: (state, action) => {
+    console.log("here");
     return {
       ...state,
       pending: false,
       error: true,
+      postList: []
     };
   }
 }, initialState);

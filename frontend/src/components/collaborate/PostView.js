@@ -14,7 +14,6 @@ export default class PostView extends Component {
     const self = this;
     axios.get(`http://localhost/api/collaborate/post/14`).then(function(res){
       // axios.get(`http://localhost/api/collaborate/post/${match.params.postId}`).then(function(res){
-      console.log(res);
       self.setState({data: res.data})
     })
   }
