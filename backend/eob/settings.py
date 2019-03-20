@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'collaborations',
+    'room',
 ]
 
 MIDDLEWARE = [
@@ -64,6 +65,7 @@ CORS_ORIGIN_REGEX_WHITELIST = (
     'localhost',
 )
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 
 ROOT_URLCONF = 'eob.urls'
 
