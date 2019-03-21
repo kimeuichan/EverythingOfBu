@@ -16,7 +16,9 @@ class RoomListCreate(generics.ListCreateAPIView):
         lon = self.request.data.get('longitude')
         lat = self.request.data.get('latitude')
         lastId = Room.objects.last()
-        print(lastId)
         location = fromstr(f'POINT({lon} {lat})', srid=lastId)
         serializer.save(location=location, writter=self.request.user)
     
+class RoomDetail(generics.RetrieveAPIView):
+    serializer_class = RoomSerializer
+    queryset = Room.objects.all()

@@ -1,9 +1,10 @@
 from .models import Room, RoomScore
 from rest_framework import serializers
+from drf_extra_fields.geo_fields import PointField
 
 class RoomSerializer(serializers.ModelSerializer):
     writter = serializers.ReadOnlyField(source='writter.username')
-    location = serializers.CharField()
+    location = PointField(read_only=True)
     longitude = serializers.FloatField(write_only=True)
     latitude = serializers.FloatField(write_only=True)
 
@@ -12,8 +13,9 @@ class RoomSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'writter', 'location', 'description', 'photo', 'created_time', 'longitude', 'latitude')
 
     def create(self, validated_data):
+        validated_data.pop('longitude')
+        validated_data.pop('latitude')
         room = Room(**validated_data)
-        room.location = location
         room.save()
         return room
 
