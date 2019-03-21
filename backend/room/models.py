@@ -12,7 +12,7 @@ class Room(models.Model):
     location = models.PointField()
     photo = ArrayField(
         models.FileField(null=True, upload_to=room_photo_path),
-        blank=True
+        blank=True,
     )
     writter = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='rooms')
     created_time = models.DateTimeField(auto_now_add=True)
@@ -27,5 +27,5 @@ class RoomScore(models.Model):
     population = models.SmallIntegerField(default=1)
     deposit = models.IntegerField(null=True, blank=True)
     room_no = models.ForeignKey('Room', on_delete=models.CASCADE, related_name='scores')
-    reviewer = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='roomReview')
+    reviewer = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='roomReviews')
     created_time = models.DateTimeField(auto_now_add=True)
