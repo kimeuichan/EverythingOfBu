@@ -13,6 +13,7 @@ class Room(models.Model):
     photo = ArrayField(
         models.FileField(null=True, upload_to=room_photo_path),
         blank=True,
+        null=True
     )
     writter = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='rooms')
     created_time = models.DateTimeField(auto_now_add=True)
