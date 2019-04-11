@@ -10,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
-import os
+import os, json
+from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +21,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-q$4@11(ug)@1utz-!nyhy(-gsr2_2i(kwkf&7!2t1x#hjl1#0'
+secret_file = os.path.join(BASE_DIR, 'secret.json') # secrets.json 파일 위치를 명시
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+with open(secret_file) as f:
+    secrets = json.loads(f.read())
 
-ALLOWED_HOSTS = []
+def get_secret(setting, secrets=secrets):
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
+
+SECRET_KEY = get_secret("SECRET_KEY")
 
 
 # Application definition
@@ -66,6 +74,7 @@ CORS_ORIGIN_REGEX_WHITELIST = (
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+MEDIA_URL = '/images/'
 
 ROOT_URLCONF = 'eob.urls'
 

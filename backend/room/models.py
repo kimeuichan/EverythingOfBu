@@ -3,7 +3,7 @@ from django.contrib.gis.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 def room_photo_path(instance, filename):
-    return 'images/room_{}/{}'.format(instance.id, filename)
+    return 'room_{}/{}'.format(instance.id, filename)
 
 class Room(models.Model):
     """Model definition for Room."""
