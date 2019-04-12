@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 
 # Create your models here.
 class Topic(models.Model):
-    name = models.CharField(max_length=30, null=False)
+    title = models.CharField(max_length=30, null=False)
     content = models.TextField(null=False, max_length=100)
     start_date = models.DateTimeField(null=False)
     end_date = models.DateTimeField(null=False)
