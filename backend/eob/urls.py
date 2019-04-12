@@ -27,6 +27,7 @@ from django.conf import settings
 urlpatterns = [
     path('', include('collaborations.urls')),
     path('api/room', include('room.urls')),
+    path('api/vote', include('Vote.urls')),
     path('admin/', admin.site.urls),
     url(r'^api/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     url(r'^api/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
