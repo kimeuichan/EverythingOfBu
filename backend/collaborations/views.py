@@ -22,7 +22,6 @@ class PostListCreate(generics.ListCreateAPIView):
     # permission_classes = (permissions.IsAuthenticated, )
 
     def perform_create(self, serializer):
-        print("here")
         serializer.save(writter=self.request.user)
 
 # Create your views here.

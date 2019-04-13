@@ -13,9 +13,8 @@ class Post(models.Model):
 class NeedMember(models.Model):
     """Model definition for DetailMember."""
 
-    # TODO: Define fields here
     memberType = models.SmallIntegerField(default=0)
-    post = models.ForeignKey('Post', related_name='members', on_delete=models.CASCADE, null=True, blank=True)
+    post = models.ForeignKey(Post, related_name='members', on_delete=models.CASCADE, null=True, blank=True)
     isRecruit = models.BooleanField(default=True)
 
     # def __str__(self):
