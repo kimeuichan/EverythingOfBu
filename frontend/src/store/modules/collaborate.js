@@ -1,12 +1,13 @@
 import { handleActions } from 'redux-actions';
+import { API_SERVER } from '../../settings';
 import axios from 'axios';
 
 function getPostListAPI(page){
-  return axios.get(`http://localhost/api/collaborate/post?page=${page}`);
+  return axios.get(`${API_SERVER}/api/collaborate/post?page=${page}`);
 }
 
 function getPostAPI(postId){
-  return axios.get(`http://localhost/api/collaborate/post/${postId}`);
+  return axios.get(`${API_SERVER}/api/collaborate/post/${postId}`);
 }
 
 const GET_POST_LIST = 'GET_POST_LIST';
