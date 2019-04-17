@@ -11,7 +11,7 @@ export default class PostListTemplate extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { mountEvt, page } = this.props;
-    if(nextProps.page != page)
+    if(nextProps.page !== page)
       mountEvt(nextProps.page);
   }
 

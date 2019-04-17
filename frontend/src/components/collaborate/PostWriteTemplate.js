@@ -3,9 +3,10 @@ import PostWrite from './PostWrite';
 
 export default class PostWriteTemplate extends Component {
   render() {
+    const { createPost } = this.props;
     return (
       <div>
-        <PostWrite />
+        <PostWrite createPost={createPost}/>
       </div>
     )
   }
