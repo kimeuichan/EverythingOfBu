@@ -6,6 +6,7 @@ from rest_framework import permissions
 
 class MemberSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(required=False)
+    isRecruit = serializers.BooleanField(default=True)
     class Meta:
         model = NeedMember
         fields = '__all__'
@@ -13,6 +14,7 @@ class MemberSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     members = MemberSerializer(many=True)
     writter = serializers.ReadOnlyField(source='writter.username')
+    isAlive = serializers.BooleanField(default=True)
 
     class Meta:
         model = Post

@@ -1,36 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
-export default class PostView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: '',
-    }
-  }
-
-  componentDidMount = () => {
-    const { match } = this.props;
-    const self = this;
-    axios.get(`http://localhost/api/collaborate/post/14`).then(function(res){
-      // axios.get(`http://localhost/api/collaborate/post/${match.params.postId}`).then(function(res){
-      self.setState({data: res.data})
-    })
-  }
-
-  render() {
-    console.log(this.state);
-    if(!this.state.data)
-      return <h1>로딩 중</h1>
-    const {title, description, writter, created_time, isAlive, members} = this.state.data;
-    return (
-      <div className="ListItem">
-        {title}
-        {description}
-      </div>
-    )
-  }
+const PostView = ({data: {title, description, writter, created_time, isAlive, members, id} }) => {
+  return (
+    <div className="ListItem">
+       <div className="item">{id}</div>
+       <div className="item">{title}</div>
+      <div className="item">{created_time}</div>
+     </div>
+  );
 }
+
+export default PostView;
 
 
 // export function PostView({item}) {

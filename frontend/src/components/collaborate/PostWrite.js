@@ -44,6 +44,12 @@ export default class PostWrite extends Component {
         jsonObject[key] = value;
     }
     console.log(jsonObject);
+    
+    // createPost(data);
+    createPost({
+      "title": "fromJavascript",
+      "description": "4444",
+      "members": [{"memberType":123}]});
   }
 
   addMember = () => {

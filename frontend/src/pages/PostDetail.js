@@ -1,8 +1,8 @@
 import React from 'react'
-import PostView from '../components/collaborate/PostView'; 
+import PostViewTemplate from '../components/collaborate/PostViewTemplate'; 
 
 const Post = () => {
-  return <PostView />;
+  return <PostViewTemplate />;
 }
 
 export default Post;

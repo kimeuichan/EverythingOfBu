@@ -73,5 +73,30 @@ export default handleActions({
       error: true,
       postList: []
     };
+  },
+
+  [CREATE_POST_SUCCESS]: (state, action) => {
+    return {
+      ...state,
+      pendig: false,
+      error: false,
+    }
+  },
+
+  [CREATE_POST_FAILURE]: (state, action) => {
+    return {
+      ...state,
+      pendig: false,
+      error: true,
+    }
+  },
+
+  [CREATE_POST_SUCCESS]: (state, action) => {
+    return {
+      ...state,
+      pendig: true,
+      error: false,
+    }
   }
+
 }, initialState);
