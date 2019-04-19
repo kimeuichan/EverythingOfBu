@@ -23,6 +23,8 @@ class PostListCreate(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         # serializer.save(writter=self.request.user)
+        # print("membersList = self.request.data")
+        # print(membersList = self.request.data)
         serializer.save(writter=User.objects.get(pk=1))
 
 # Create your views here.
