@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import { List, Record } from 'immutable';
 
-const Member = Record({
-  type: 0,
-});
 
 const MemberList = ({handleChange, index, handleRemove}) => {
   return (
     <div>
-      <select name={`members[${index}]`} onChange={(evt) => handleChange(evt, index)}>
+      <select onChange={(evt) => handleChange(evt, index)}>
         <option value="0">개발자</option>
         <option value="1">디자이너</option>
         <option value="2">PM</option>
@@ -22,9 +19,7 @@ export default class PostWrite extends Component {
   constructor(props){
     super();
     this.state = {
-      members : List([
-        Member({type: 0}),
-      ]),  
+      members : List([{memberType: 0}]),  
     };
   }
 
@@ -38,23 +33,25 @@ export default class PostWrite extends Component {
     const { createPost } = this.props;
     
     const data = new FormData(event.target);
+    const membersArray = Array.from(this.state.members.toArray());
+
     let jsonObject = {};
 
     for (const [key, value]  of data.entries()) {
         jsonObject[key] = value;
     }
-    console.log(jsonObject);
+
+
+    jsonObject['members'] = membersArray;
+
+    // console.log(jsonObject);
     
-    // createPost(data);
-    createPost({
-      "title": "fromJavascript",
-      "description": "4444",
-      "members": [{"memberType":123}]});
+    createPost(jsonObject);
   }
 
   addMember = () => {
     this.setState({
-      members: this.state.members.push(Member())
+      members: this.state.members.push({memberType: 0})
     });
   }
 
