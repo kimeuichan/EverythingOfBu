@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'corsheaders',
     'rest_framework',
+    'rest_auth',
     'collaborations',
     'room',
     'Vote',

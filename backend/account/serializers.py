@@ -1,0 +1,1 @@
+from rest_auth.registration.serializers import RegisterSerializer
